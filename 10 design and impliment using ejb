@@ -1,223 +1,61 @@
-Program: 
-login.jsp 
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
-<!DOCTYPE html> 
-<html> 
- <head> 
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
- <title>JSP Page</title> 
- </head> 
- <body> 
- <h1>Login</h1> 
- <form action="loginform.do" method="post"> 
-username <input type="text" 
-name="uname"/><br/> password <input 
-type="password" name="upass"/><br/> 
- <input type="submit" value="Login"/> 
+Assignment No. 10
+
+PROGRAM CODE: INPUT & OUTPUT
+
+Create a new EJB Project :
+Open Eclipse IDE and create a new EJB project which can be done by clicking on, File menu -> New ->
+EJB Project
+Step 1: Create EJB project addition.
+ Click File –> New –> Other –> EJB –> EJB Project –> Next 
  
- </form> 
- </body> 
-</html> 
-success.jsp 
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
-<!DOCTYPE html> 
-<html> 
- <head> 
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
- <title>JSP Page</title> 
- </head> 
- <body> 
- <h1>Success Page</h1> 
- </body> 
-</html> 
-failure.jsp 
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
-<!DOCTYPE html> 
-<html> 
- <head> 
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
- <title>JSP Page</title> 
- </head> 
- <body> 
- <h1>Failure page</h1>
+
+Step 2 :
+Now create Stateless session bean with its remote interface. Expand project –> expande
+ejbModule –> Right click Session Bean –> New –> Session
  
-</bod
-y> 
-</htm
-l> 
-login
-bea
-n.jav
-a 
-package com.myapp.struts; 
-import javax.servlet.http.HttpServletRequest; 
-import 
-org.apache.struts.action.ActionErrors; 
-import 
-org.apache.struts.action.ActionMappin
-g; import 
-org.apache.struts.action.ActionMessag
-e; 
-/** 
-*
-* @author hp 
-*/ public class loginbean extends 
-org.apache.struts.action.ActionForm { 
+In ejbModule 2 java files are going to create after Finish button.
  
- private String uname; 
  
- private String upass; 
- public String 
-getUname() { 
-return uname; 
- } 
- public void setUname(String 
-uname) { this.uname = uname; 
- } 
- public String 
-getUpass() { 
-return upass; 
- } 
- public void setUpass(String 
-upass) { this.upass = upass; 
- } 
- public 
-loginbean() { 
-super(); 
- // TODO Auto-generated constructor stub 
- } 
+Now we need to deploy the our EJB "addition" on server. Follow the steps mentioned bellow to
+deploy this project on server.
+Strat the server
+Right click on "JBoss 7.1 Runtime Server" from Servers view and click on Start.
  
- public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) 
-{ ActionErrors errors = new ActionErrors(); 
+
+Step 4:
+Now next step Go to Project-> addition -> right click -> run-> Run on server
  
- return errors; 
- } 
-} 
-loginform.java 
-package com.myapp.struts; 
-import 
-javax.servlet.http.HttpServletRequest; 
-import 
-javax.servlet.http.HttpServletRespons
-e; import 
-org.apache.struts.action.ActionForm; 
-import 
-org.apache.struts.action.ActionForwar
-d; import 
-org.apache.struts.action.ActionMappi
-ng; public class loginform extends 
-org.apache.struts.action.Action { 
- /* forward name="success" 
-path="" */ private static final 
-String SUCCESS = "success"; 
-private static final String FAILURE = 
-"failure"; 
+Step 5:
+After running the program you can see following message on console
  
- @Override public ActionForward execute(ActionMapping 
-mapping, ActionForm form, HttpServletRequest request, 
-HttpServletResponse response) throws Exception { 
-loginbean lb = (loginbean)form; 
-if(lb.getUname().equals("abc") && lb.getUpass().equals("123")) 
-return mapping.findForward(SUCCESS); 
- else 
- return mapping.findForward(FAILURE); 
- } 
-} 
-structs-config.xml 
-<?xml version="1.0" encoding="UTF-8" ?> 
-<!DOCTYPE struts-config PUBLIC 
- "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
- "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd"> <struts-config> 
- <form-beans> 
- <form-bean name="loginbean" type="com.myapp.struts.loginbean"/>
  
- </form-beans> 
+Step 7:
+Now create another project
  
- <global-exceptions> 
+Write project name-> as additionweb -> finish
  
- </global-exceptions> 
- <global-forwards> 
- <forward name="failure" path="/failure.jsp"/> 
- <forward name="success" path="/success.jsp"/> 
+Get a file structure as follow :
+
  
- <forward name="welcome" path="/Welcome.do"/> 
- </global-forwards> 
- <action-mappings> 
- <action name="loginbean" path="/loginform" scope="request" 
-type="com.myapp.struts.loginform" validate="false"/> 
- <action path="/Welcome" forward="/welcomeStruts.jsp"/> 
- </action-mappings> 
+Step 8:
+WebContent -> right click->new -> html page
  
- <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/> 
- <message-resources parameter="com/myapp/struts/ApplicationResource"/> 
+Step 9:
+WebContent -> right click->new -> jsp page
  
- <plug-in className="org.apache.struts.tiles.TilesPlugin" > 
- <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" /> 
- <set-property property="moduleAware" value="true" /> 
- </plug-in> 
+Get the file structure in project window as follows
  
- <!-- ========================= Validator plugin ================================= --> 
- <plug-in className="org.apache.struts.validator.ValidatorPlugIn"> 
- <set-property property="pathnames" 
-value="/WEB-INF/validator-rules.xml,/WEBINF/validation.xml"/> </plug-in> 
+
+
+
+Write the following code in form.html
  
-</struts-config> 
-web.xml 
-<?xml version="1.0" encoding="UTF-8"?> 
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
-http://xmlns.jcp.org/xml/ns/javaee/webapp_3_1.xsd"> 
- <servlet> 
- <servlet-name>action</servlet-name> 
- <servlet-class>org.apache.struts.action.ActionServlet</servlet-class> 
- <init-param> 
- <param-name>config</param-name> 
- <param-value>/WEB-INF/struts-config.xml</param-value> 
- </init-param> 
- <init-param> 
- <param-name>debug</param-name> 
- <param-value>2</param-value> 
- </init-param> 
- <init-param> 
- <param-name>detail</param-name> 
- <param-value>2</param-value> 
- </init-param> 
- <load-on-startup>2</load-on-startup> 
- </servlet> 
- <servlet-mapping> 
- <servlet-name>action</servlet-name> 
- <url-pattern>*.do</url-pattern> 
- </servlet-mapping> 
- <session-config> 
- <session-timeout> 
- 30 
- </session-timeout> 
- </session-config> 
- <welcome-file-list> 
- <welcome-file>login.jsp</welcome-file> 
- </welcome-file-list> 
- <jsp-config> 
- <taglib> 
- <taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri> 
- <taglib-location>/WEB-INF/struts-bean.tld</taglib-location> 
- </taglib> 
- <taglib> 
- <taglib-uri>/WEB-INF/struts-html.tld</taglib-uri> <taglib-location>/WEB-INF/strutshtml.tld</taglib-location> 
- </taglib> 
- <taglib> 
- <taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri> 
- <taglib-location>/WEB-INF/struts-logic.tld</taglib-location> 
- </taglib> 
- <taglib> 
- <taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri> 
- <taglib-location>/WEB-INF/struts-nested.tld</taglib-location> 
- </taglib> 
- <taglib> 
- <taglib-uri>/WEB-INF/struts-tiles.tld</taglib-uri> 
- <taglib-location>/WEB-INF/struts-tiles.tld</taglib-location> 
- </taglib> 
- </jsp-config> 
-</web-app> 
-Output: 
+Write following code in webappadd.jsp
  
+Step 10 :
+Copy the url from step 5 and add that url in wepappadd code as given above.
+Step 11 :
+Running the application :
+Right click on project addition-> run as -> run on server
+ 
+  
