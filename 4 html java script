@@ -1,0 +1,115 @@
+CODE: 
+CSS 
+.one { 
+width:400p
+x; 
+height:400
+px; 
+backgroun
+dcolor:blue; 
+padding:0px,10p
+x,0px,10px; 
+margin:auto; 
+border:solid; 
+border-color:black; 
+} 
+.main{} 
+JS 
+<html> 
+<head> 
+<title>Javascript</title> 
+</head> 
+<body> 
+<script language="JavaScript"> 
+document.write("Student Registeration Form"); 
+document.write("<input type="text" value=" "></input>"); 
+</script> 
+</body> 
+</html> 
+HTML 
+<html> 
+<head> 
+<titel> </title> 
+<link href="ass4.css" rel="stylesheet"></link> 
+<script language="JavaScript"> 
+function validateForm() 
+{ 
+var 
+x=document.forms["m
+yForm"] 
+["fname"].value; 
+if(x=="") { alert("Enter 
+the all details....."); 
+return false; 
+} 
+var 
+x=document.forms["m
+yForm"] 
+["mname"].value; 
+if(x=="") { alert("Enter 
+the all details....."); 
+return false; 
+} 
+var 
+x=document.forms["m
+yForm"] 
+["lname"].value; 
+if(x=="") { alert("Enter 
+the all details....."); 
+return false; 
+} 
+var 
+y=document.forms["m
+yForm"] ["add"].value; 
+if(y=="") { alert("Enter 
+the all details....."); 
+return false; 
+} 
+var 
+z=document.forms["my
+Form"] ["email"].value; 
+if(z=="") { alert("Enter 
+the all details....."); 
+return false; 
+} 
+var 
+a=document.forms["my
+Form"] ["ph"].value; 
+if(a=="") { alert("Enter 
+the all details....."); 
+return false; 
+} 
+document.forms["myForm"].reset() 
+} 
+</script> 
+</head> 
+<body > 
+<center> 
+<div class="main"> 
+<h1>Form Validation Using jQuery</h1> 
+<div id="form"> 
+<p id="head"></p> <!-- This Segment Displays The Validation Rule --> 
+<form name="myForm" action="message.html" align="center" onsubmit="return 
+validateForm()" method="post" > 
+First Name: <input type="text" name="fname"><br><br> 
+Middle Name: <input type="text" name="mname"><br><br> 
+Last Name: <input type="text" name="lname"><br><br> 
+Email: <input type="email" name="email"><br><br> 
+Phone:<input type="number" name="ph"><br><br> 
+Country:<select id='s'> 
+<option> </option> 
+<option>India</option> 
+<option>America</option> 
+<option>Australia</option> 
+<option>Sweden</option> 
+<option>Africa</option> 
+</select> 
+<br><br><br> 
+Address:<textarea rows="5" cols="25" value="g" required></textarea><br><br><br> 
+<br><input type ="submit" value="Submit" > 
+</form> 
+</div> 
+</center> 
+</body> 
+</html> 
+Output:
