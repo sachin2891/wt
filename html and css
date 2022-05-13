@@ -1,0 +1,193 @@
+Display.css 
+<html> 
+<head> 
+<title> display</title> 
+</head> 
+<body> 
+<h1 style="color:blue;margin-left:30px;"> You have submitted the form successfully....</h1> 
+</bo
+dy> 
+</ht
+ml> 
+sam
+p.cs
+s 
+.con { 
+width:400px
+; 
+height:400p
+x; 
+backgroundcolor:white; 
+color:blue; 
+padding:0px 10px 0px 10px; 
+margin:auto; 
+} 
+.
+m
+a
+i
+n 
+{ 
+w
+i
+d
+t
+h
+:
+4
+0
+0
+p
+x
+; 
+height:80
+px; 
+float:left; 
+padding:60px 10px 10px10px; 
+margin: auto; 
+} 
+.
+c
+o
+n
+1 
+{ 
+w
+i
+d
+t
+h
+:
+2
+0
+0
+p
+x
+; 
+height:30
+px; 
+float:left; 
+margin:a
+uto; 
+padding:0px 0px 0px0px; 
+} 
+.
+c
+o
+n
+2 
+{ 
+w
+i
+d
+t
+h
+:
+1
+5
+0
+p
+x
+; 
+height:30
+px; 
+float:left; 
+margin:10px 10px 10px10px; 
+padding:0px 0px 0px0px; 
+} 
+#terms 
+{ 
+color:blue; 
+paddingleft:400px; 
+} 
+two.html 
+<html> 
+<head> 
+<title>regform</title> 
+<link href="samp.css" rel="stylesheet"></link> 
+</head> 
+<body> 
+<div class="con"> 
+<form action="display.html" method="get" align="center"> 
+<div class="con2"> 
+<imgsrc="/home/sanyuja/Desktop/b.jpg" width=380px height=100px 
+alt="img"> </div> 
+<div class="main"> 
+<table align="center"> 
+<tr> 
+<td><h1>Welcome to Registration Page</h1></td></tr> 
+</table> 
+<div class="con1"> 
+<table align="center"> 
+<tr> 
+<td>Full Name:</td> 
+<td><input type="text" value=""></input></td> 
+</tr> 
+<tr> 
+<td>Select Gender</td> 
+<td><input type="radio" name="gender"/>Female</input> 
+<input type="radio" name="gender"/>Male</input></td> 
+</tr> 
+<br> 
+<tr> 
+<td>Class</td> 
+<td><input type="text" value=""></input></td> 
+</tr> 
+<br> 
+<tr> 
+<td>Skills</td> 
+<td><input type="checkbox" value="">C </input> 
+<input type="checkbox" value="">C++</input> 
+<input type="checkbox" value="">JAVA</input> 
+<input type="checkbox" value="">PHP</input> 
+<input type="checkbox" value="">AJAX</input></td> 
+</tr> 
+<br> 
+<tr> 
+<td>Department</td> 
+<td> 
+<select> 
+ <option value="comp">COMPUTER</option> 
+ <option value="it">Information Technology</option> 
+<option value="it">Electronics & Telecomunications</option> 
+ <option value="mech">Mechnical</option> 
+ <option value="civil">Civil</option> 
+</select> 
+</td> 
+</tr> 
+<tr> 
+<td>email:</td> 
+<td><input type="text" value=""></input></td> 
+</tr> 
+<tr> 
+<td>phone:</td> 
+<td><input type="text" value=""></input></td> 
+</tr> 
+<tr></tr><tr></tr> 
+</table> 
+<table align="center"> 
+<tr> 
+<td><input type="submit" value="SUBMIT"></td> 
+<td><input type="reset" value="CANCEL"></td> 
+<
+/
+t
+d
+>
+<
+/
+t
+r
+> 
+</table> 
+</div> 
+</div> 
+</form> 
+</div> 
+<br><br><br><br> 
+<div id="terms"> 
+<span>By clicking Submit you agree to our Terms & 
+Conditions</span> </div> 
+</body> 
+</html> 
+Output:
