@@ -1,0 +1,633 @@
+Code:
+• db_
+con
+nec
+t.p
+hp 
+<?php 
+ $conn=mysqli_connect('localhost','root','','assignment6'); 
+if(mysqli_connect_
+errno()){ echo 
+'Connection error'; 
+ } 
+?> 
+• ind
+ex.
+ph
+p 
+<?p
+hp 
+session_start(); 
+if(!isset($_SESSION['email'])) 
+ { 
+ $_SESSION['email']=''; 
+ } 
+?> 
+<html> 
+<head><title>Home Page</title> 
+<style> 
+.button { 
+background
+-
+color:white; 
+color:black; 
+padding:5p
+x; textalign:center
+; 
+padding:15
+px 30px; 
+transitionduration:0.
+4s; borderradius:4px; 
+fontsize:25px; 
+} 
+.top { 
+backgroundcolor:#ff5b5b
+; color:white; 
+padding:5px; 
+textalign:center; 
+padding:15px 
+30px; fontsize:25px; 
+float:left; 
+border:none; 
+width:50%; 
+} 
+</style> 
+</head> 
+<body style="font-family:Veranda,sans-serif;"> 
+<div class="top_bar"> 
+<a href="index.php"><button class="top">Home</button></a> 
+<a href="abt.php"><button class="top">About Us</button></a> 
+</div> 
+<center> 
+<a style="clear:left;" href="s_in.php"><button style="margin-top:10%;" class="button 
+s_in">Sign-in</button></a> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<a href="s_up.php"><button class="button s_up">Sign-up</button></a> 
+</center> 
+</body> 
+</html> 
+s_in.php
+<html> 
+<head><title>Sign-in to your account</title> 
+<style> .header { 
+margin-top:5px; 
+margin-bottom:10%; 
+border-left:2px solid 
+#4CAF50; bordertop:2px solid 
+#4CAF50; borderright:2px solid 
+#008CBA; borderbottom:2px solid 
+#008CBA; 
+padding:8px; fontsize:30px; textalign:center; 
+} 
+.top { backgroundcolor:#ff5b5b; 
+color:white; textalign:center; 
+padding:15px 
+30px; fontsize:25px; 
+float:left; 
+border:none; 
+width:50%; 
+marginbottom:10px; 
+} 
+.button { 
+backgroundcolor:white; 
+color:black; 
+textalign:center; 
+padding:10px 
+15px; 
+transitionduration:0.4s; 
+borderradius:4px; 
+font-size:20px; 
+} 
+</style> 
+</head> 
+<body style="font-family:Veranda,sans-serif;"> 
+<div class="top_bar"> 
+<a href="index.php"><button class="top">Home</button></a> 
+<a href="abt.php"><button class="top">About Us</button></a> 
+</div> 
+<center> 
+<div style="clear:left;" class="header">Sign-in to your Account</div> <form 
+action="login_validate.php" method="POST"> 
+<table> 
+<tr><td>Email:</td><td style="text-align:center;"><input type="text" id="email" name="email" 
+placeholder="Enter your email id" class="login"></td></tr> 
+<tr><td>Password:</td><td style="text-align:center;"><input type="password" id="pword" 
+name="pword" placeholder="Enter your password" class="login"></td></tr> 
+</table> 
+<br><br> 
+<button type="submit" name="submit" class="button s_in">Login</button> 
+&nbsp;&nbsp;&nbsp;&nbsp; 
+<button type="reset" name="reset" class="button reset">Reset</button> 
+</form> 
+</center> 
+</body> 
+</html> 
+login_validate.php 
+<?php 
+require 
+'db_connect
+.php'; 
+session_star
+t(); 
+ $email=$_POST['email']; 
+ $pword=$_POST['pword']; 
+ $query="select * from registration_details where email='$email' AND pword='$pword' "; 
+$result=mysqli_query($conn,$query); 
+if(mysqli_num_rows($result)>0) 
+ { 
+ $_SESSION['email']=$email; 
+ ?> 
+<script>location.href="s_info.php";</script> 
+<?php 
+ 
+}
+e
+l
+s
+e
+{ 
+ ?> 
+<script>alert('Please check email id or password'); 
+location.href="s_in.php"; 
+</script> 
+<?php 
+ } 
+?> 
+s_up.php 
+<html> 
+<head><title>Sign-up for a new account</title> 
+<style> .top { 
+backgroundcolor:#ff5b5b
+; color:white; 
+textalign:center; 
+padding:15px 
+30px; font-
+size:25px; 
+float:left; 
+border:none; 
+width:50%; 
+marginbottom:10px; 
+} 
+.header { 
+margintop:5px; 
+marginbottom:5%; 
+borderleft:2px 
+solid 
+#4CAF50; 
+bordertop:2px 
+solid 
+#4CAF50; 
+borderright:2px 
+solid 
+#008CBA; 
+borderbottom:2px 
+solid 
+#008CBA; 
+padding:8p
+x; fontsize:30px; 
+textalign:center
+; 
+} 
+.button { 
+backgroun
+dcolor:white
+; 
+color:black
+; 
+padding:10
+px 15px; 
+textalign:cente
+r; borderradius:4px; 
+transitionduration:0.
+4s; fontsize:20px; 
+} 
+</style> 
+</head> 
+<body style="font-family:Veranda,sans-serif;"> 
+<div class="top_bar"> 
+<a href="index.php"><button class="top">Home</button></a> 
+<a href="abt.php"><button class="top">About Us</button></a> 
+</div> 
+<center> 
+<div style="clear:left;"class="header">Sign-up for a new account</div> 
+</center> 
+<div> 
+<form id="sign_up" action="reg_user.php" method="POST"> 
+<center> 
+<table> 
+<tr><td>First Name:</td><td style="text-align:center;"><input type="text" id="fname" 
+name="fname" placeholder="Saad" class="info"></td></tr> 
+<tr><td>Last Name:</td><td style="text-align:center;"><input type="text" id="lname" 
+name="lname" placeholder="Shaikh" class="info"></td></tr> 
+<tr><td>Gender:</td><td style="text-align:center;"><input type="radio" 
+name="gender" id="mradio" value="Male" checked>Male 
+&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" id="fradio" 
+value="Female">Female</td></tr> 
+<tr><td>Age:</td><td style="text-align:center;"><input type="text" id="age" name="age" 
+placeholder="20" class="info"></td></tr> 
+<tr><td>Mobile No.:</td><td style="text-align:center;"><input type="text" id="mno" 
+name="mno" placeholder="123456789" class="info"></td></tr> 
+<tr><td>Address:</td><td style="text-align:center;"><input type="text" id="add" name="add" 
+placeholder="Ganga Savera" class="info"></td></tr> 
+<tr><td>Email ID:</td><td style="text-align:center;"><input type="email" id="email" 
+name="email" placeholder="saad@gmail.com" class="info"></td></tr> 
+<tr><td>Password:</td><td style="text-align:center;"><input type="text" id="pword" 
+name="pword" placeholder="********" class="info"></td></tr> 
+</table> 
+</center> 
+<br><br> 
+<center> 
+<button type="submit" class="button register">Register</button> 
+&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp; 
+<button type="reset" class="button reset">Reset</button> 
+</center> 
+</form> 
+</div> 
+</body> 
+</html> 
+reg_us
+er.php 
+<?php 
+require 
+'db_connect
+.php'; 
+ $fname=$_POST['fname']; 
+ $lname=$_POST['lname']; 
+ $gender=$_POST['gender']; 
+ $age=$_POST['age']; 
+ $mno=$_POST['mno']; 
+ $add=$_POST['add']; 
+ $email=$_POST['email']; 
+ $pword=$_POST['pword']; 
+ $query="insert into 
+registration_detailsvalues('$fname','$lname','$gender','$age','$mno','$add','$email','$pword')"; 
+if(mysqli_query($conn,$query)) 
+ { 
+ ?> 
+<script>alert('Registered Successfully!'); 
+location.href="s_in.php"; 
+</script> 
+<?php 
+ } else { echo 'Error: 
+'.mysqli_error($conn
+); 
+ } 
+?> 
+s_info.ph
+p <?php 
+require 
+'db_connect.p
+hp'; 
+session_start()
+; 
+if($_SESSIO
+N['email']=='') 
+ { 
+ ?> 
+<script>alert('Please login to the system first!'); 
+location.href="s_in.php";</script> 
+<?php 
+ 
+}
+e
+l
+s
+e
+{ 
+ $query="select * from s_info"; 
+ $result=mysqli_query($conn,$query); 
+ 
+$info=mysqli_fetch_all($result,MYSQLI
+_ASSOC); mysqli_free_result($result); 
+mysqli_close($conn); 
+ } 
+?> 
+<html> 
+<head><title>Student Information</title>
+<style> .header { 
+margin-top:5px; 
+margin-bottom:5%; 
+border-left:2px solid 
+#4CAF50; border-
+top:2px solid 
+#4CAF50; borderright:2px solid 
+#008CBA; borderbottom:2px solid 
+#008CBA; 
+padding:8px; fontsize:30px; textalign:center; 
+} 
+.button { 
+backgroundcolor:white; 
+color:black; 
+textalign:center; 
+padding:10px 
+15px; 
+transitionduration:0.4s; 
+borderradius:4px; 
+font-size:20px; 
+} 
+tr:nth-child(even) {background-color:#efefef;} 
+.tablebtn:link, 
+.tablebtn:visited { 
+background-color: 
+white; color: black; 
+padding: 5px 
+5px; text-align: 
+center; textdecoration: 
+none; display: 
+inline-block; 
+transitionduration:0.4s; 
+borderradius:4px; 
+border:1px 
+solid #ff5b5b; 
+} 
+</style> 
+</head> 
+<body style="font-family:Veranda,sans-serif;"> 
+<center> 
+<div class="header">Student Information</div> 
+<br><br><br> 
+<table width="100%"> 
+<tr> 
+<thcolspan="6">C3 Student Information</th> 
+</tr> 
+<tr style="background-color:#ff5b5b;color:white;"> 
+<th>Roll No.</th> 
+<th>First Name</th> 
+<th>Last Name</th> 
+<th>Gender</th> 
+<th>Mobile No.</th> 
+<th>Action</th> 
+</tr> 
+<?phpforeach($info as $row){ ?> 
+<tr> 
+<td><?php echo $row['rollno']; ?></td> 
+<td><?php echo $row['first_name']; ?></td> 
+<td><?php echo $row['last_name']; ?></td> 
+<td><?php echo $row['gender']; ?></td> 
+<td><?php echo $row['mobile_number']; ?></td> 
+<td> 
+<a href="update.php?rollno=<?php echo $row['rollno']; ?>" class="tablebtn">Update</a> 
+&nbsp;&nbsp;&nbsp;&nbsp; 
+<a href="delete.php?rollno=<?php echo $row['rollno']; ?>" class="tablebtn">Delete</a> 
+</td> 
+</tr> 
+<?php }?> 
+</table> 
+<a href="insert.php"><button type="button" name="insert" class="button insert" 
+style="margintop:5%;">Insert</button></a> 
+<a href="logout.php"><button style="position:absolute; top:12%; right:3%;" class="button 
+logout">Logout</button></a> 
+</center> 
+</body> 
+</html>
+insert.p
+hp 
+<?php 
+session_start(); 
+if($_SESSION['email']=='') 
+ { 
+ ?> 
+<script>alert('Please login to the sytsem first!'); 
+location.href="s_in.php";</script> 
+<?php 
+ } 
+?> 
+<html> 
+<head><title>Insert Student Information</title> 
+<style> .header { 
+margin-top:5px; 
+margin-bottom:5%; 
+border-left:2px solid 
+#4CAF50; bordertop:2px solid 
+#4CAF50; borderright:2px solid 
+#008CBA; borderbottom:2px solid 
+#008CBA; 
+padding:8px; fontsize:30px; textalign:center; 
+} 
+.button { 
+backgroundcolor:white; 
+color:black; 
+textalign:center; 
+padding:10px 15px; 
+transitionduration:0.4s; 
+border-radius:4px; 
+font-size:20px; 
+} 
+</style> 
+</head> 
+<body style="font-family:Veranda,sans-serif;"> 
+<center> 
+<div class="header">Insert Records to Table</div> 
+<br><br><br> 
+<form action="insert_rec.php" method="POST"> 
+<table> 
+<tr><td>First Name:</td><td style="text-align:center;"><input type="text" id="fname" 
+name="fname" placeholder="Enter first name" class="addrec"></td></tr> 
+<tr><td>Last Name:</td><td style="text-align:center;"><input type="text" id="lname" 
+name="lname" placeholder="Enter last name" class="addrec"></td></tr> 
+<tr><td>Gender:</td><td style="text-align:center;"><input type="text" id="gender" 
+name="gender" placeholder="Enter the gender" class="addrec"></td></tr> 
+<tr><td>Mobile No.:</td><td style="text-align:center;"><input type="text" id="mno" 
+name="mno" placeholder="Enter the mobile no" class="addrec"></td></tr> 
+</table> 
+<br><br> 
+<button type="submit" name="submit" class="button insert">Insert</button> 
+&nbsp;&nbsp;&nbsp;&nbsp; 
+<button type="reset" name="reset" class="button reset">Reset</button> 
+</form> 
+</center> 
+<a href="s_info.php"><button style="position:absolute; top:12%; left:3%;" class="button 
+back">Back</button></a> 
+</body> 
+</html> 
+insert_rec.php 
+<?php 
+require 'db_connect.php'; 
+session_start(); 
+if($_SESSION['email']=='') 
+ { 
+ ?> 
+<script>alert('Please login to the system first!'); 
+location.href="s_in.php";</script> 
+<?php 
+ } 
+else{ 
+ $fname=$_POST['fname']; 
+ $lname=$_POST['lname']; 
+ $gender=$_POST['gender']; 
+ $mno=$_POST['mno']; 
+if($fname!='' && $lname!='' && $gender!='' && $mno!='') 
+ { 
+ $query="insert into s_info(first_name,last_name,gender,mobile_number) 
+values('$fname','$lname','$gender','$mno')"; 
+if(mysqli_query($conn,$query)) 
+ { 
+ ?> 
+<script>alert('Inserted Successfully!'); 
+location.href="s_info.php"; 
+</script> 
+<?php 
+ } 
+else { echo 'Error: 
+'.mysqli_error($conn); 
+ } 
+ } 
+else { 
+ ?> 
+<script>alert('Please fill in all fields!'); 
+location.href="insert.php";</script> 
+<?php 
+ } 
+ } 
+?> 
+update.php 
+<?php 
+require 'db_connect.php'; 
+session_start(); 
+if($_SESSION['email']=='') 
+ { 
+ ?> 
+<script>alert('Please login to the system first!'); 
+location.href="s_in.php";</script> 
+<?php 
+ } 
+else{ 
+ $rollno=$_GET['rollno']; 
+ $query="select * from s_info where rollno='$rollno'"; 
+ $result=mysqli_query($conn,$query); 
+ $info=mysqli_fetch_assoc($result); 
+ } 
+?> 
+<html> 
+<head><title>Update Student Information</title> 
+<style> .header {
+margin-top:5px; 
+margin-bottom:5%; 
+border-left:2px solid 
+#4CAF50; bordertop:2px solid 
+#4CAF50; borderright:2px solid 
+#008CBA; borderbottom:2px solid 
+#008CBA; 
+padding:8px; fontsize:30px; textalign:center; 
+} 
+.button { 
+background-
+color:white; 
+color:black; 
+textalign:center; 
+padding:10px 15px; 
+transitionduration:0.4s; 
+border-radius:4px; 
+font-size:20px; 
+} 
+</style> 
+</head> 
+<body style="font-family:Veranda,sans-serif;"> 
+<center> 
+<div class="header">Update Existing Record</div> 
+<br><br><br> 
+<form action="update_rec.php?rollno=<?php echo $rollno; ?>" method="POST"> 
+<table> 
+<tr><td>First Name:</td><td style="text-align:center;"><input type="text" id="fname" 
+name="fname" value="<?php echo $info['first_name']; ?>" class="updtrec"></td></tr> 
+<tr><td>Last Name:</td><td style="text-align:center;"><input type="text" id="lname" 
+name="lname" value="<?php echo $info['last_name']; ?>" class="updtrec"></td></tr> 
+<tr><td>Gender:</td><td style="text-align:center;"><input type="text" id="gender" 
+name="gender" value="<?php echo $info['gender']; ?>" class="updtrec"></td></tr> 
+<tr><td>Mobile No.:</td><td style="text-align:center;"><input type="text" 
+id="mno" name="mno" value="<?php echo $info['mobile_number']; ?>" 
+class="updtrec"></td></tr> 
+</table> 
+<br><br> 
+<button type="submit" name="submit" class="button update">Update</button> 
+&nbsp;&nbsp;&nbsp;&nbsp; 
+<button type="reset" name="reset" class="button reset">Reset</button> 
+</form> 
+</center> 
+<a href="s_info.php"><button style="position:absolute; top:12%; left:3%;" class="button 
+back">Back</button></a> 
+</body> 
+</html> 
+update_rec.php 
+<?php 
+require 'db_connect.php'; 
+session_start(); 
+if($_SESSION['email']=='') 
+ { 
+ ?> 
+<script>alert('Please login to the system first!'); 
+location.href="s_in.php";</script> 
+<?php 
+ 
+}
+e
+l
+s
+e
+{ 
+ $rollno=$_GET['rollno']; 
+ $fname=$_POST['fname']; 
+ $lname=$_POST['lname']; 
+ $gender=$_POST['gender']; 
+ $mno=$_POST['mno']; 
+if($fname!='' && $lname!='' && $gender!='' && $mno!='') 
+ { 
+ $query="update s_info set 
+first_name='$fname',last_name='$lname',gender='$gender',mobile_number='
+$mno' where rollno='$rollno'"; if(mysqli_query($conn,$query)) 
+ { 
+ ?> 
+<script>alert('Updated Successfully!'); 
+location.href="s_info.php"; 
+</script> 
+<?php 
+ } 
+else { echo 'Error: 
+'.mysqli_error($conn); 
+ } 
+ } 
+else { 
+ ?> 
+<script>alert('Please fill in all fields!'); 
+location.href="update.php?rollno=<?php echo $rollno; ?>";</script> 
+<?php 
+ } 
+ } 
+?> 
+delete.p
+hp 
+<?php 
+require 'db_connect.php'; 
+session_start(); 
+if($_SESSION['email']=='') 
+ { 
+ ?> 
+<script>alert('Please login to the system first!'); 
+location.href="s_in.php";</script> 
+<?php 
+ } 
+else { 
+ $rollno=$_GET['rollno']; 
+ $query="delete from s_info where rollno='$rollno'"; 
+if(mysqli_query($conn,$query)) 
+ { 
+ ?> 
+<script>alert('Deleted Successfully!'); 
+location.href="s_info.php"; 
+</script> 
+<?php 
+ } 
+else { echo 'Error: 
+'.mysqli_error($conn); 
+ } 
+ } 
+?> 
+logout.p
+hp 
+<?php 
+session_start(); 
+session_destroy(); 
+?> 
+<script>location.href="index.php";</script> 
+Output:
